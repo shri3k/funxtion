@@ -1,0 +1,15 @@
+{
+  "name": "funxtion",
+  "version": "0.0.0",
+  "description": "#Description Makes it able to only execute exported function from the cli without running the whole program",
+  "main": "index.js",
+  "scripts": {
+    "tester": "node tester.js",
+    "random": "node random.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nopt": "^3.0.1"
+  }
+}
