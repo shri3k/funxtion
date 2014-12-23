@@ -1,6 +1,6 @@
 {
   "name": "funxtion",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "#Description Makes it able to only execute exported function from the cli without running the whole program",
   "main": "index.js",
   "dependencies": {
