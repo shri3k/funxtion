@@ -9,8 +9,9 @@ try {
 
 var nopt = require('nopt');
 var parsedArg = nopt({
+	
+	//probably for future
   'arg': [String, Array],
-  ":": [String]
 }, {}, process.argv, 2);
 
 var funx = parsedArg.argv.remain;
