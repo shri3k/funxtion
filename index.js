@@ -22,7 +22,7 @@ var argus = divider[1] ? divider[1].split(',') : '';
 module.exports = Proxy.create({
   set: function(target, propKey, fn) {
     if (propKey === funcName) {
-      fn.apply(argus, null);
+      fn.apply(null, argus);
     }
   }
 });
