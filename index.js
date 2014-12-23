@@ -1,4 +1,13 @@
-var nopt = require("nopt");
+'use strict';
+
+try {
+  Proxy.create({});
+} catch (e) {
+  process.stderr.write('No Harmony flag given. \nPlease re-run with --harmony or --harmony-proxies flag\n');
+  process.exit(1);
+}
+
+var nopt = require('nopt');
 var parsedArg = nopt({
   'arg': [String, Array],
   ":": [String]
