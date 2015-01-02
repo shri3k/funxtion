@@ -1,4 +1,5 @@
 #Funxtion
+[![Build Status](https://travis-ci.org/sinkingshriek/funxtion.svg)](https://travis-ci.org/sinkingshriek/funxtion)
 
 ##Description
 Makes it able to only execute exported function from the cli without running the whole program.  
