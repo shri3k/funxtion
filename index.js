@@ -17,7 +17,7 @@ var parsedArg = nopt({
 var funx = parsedArg.argv.remain;
 var divider = funx[0] ? funx[0].split(':') : [];
 var funcName = divider[0] ? divider[0] : '';
-var argus = divider[1] ? divider[1].split(',') : '';
+var argus = divider[1] ? divider[1].split(',') : [];
 
 module.exports = Proxy.create({
   set: function(target, propKey, fn) {

@@ -6,9 +6,12 @@
   "dependencies": {
     "nopt": "^3.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tape": "^3.0.3"
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "jshint ./index.js test/*.js && node test/index.js",
+    "test_debug": "jshint --verbose ./index.js test/*.js && node test/index.js"
   },
   "repository": {
     "type": "git",
