@@ -1,17 +1,17 @@
 #Funxtion
 
-#Description
+##Description
 Makes it able to only execute exported function from the cli without running the whole program.  
 This tool comes under a dev utility tool which lets you prototype your functions all in one file and still be able to run individual functions to test it on your cli. 
 
-#Syntax
+##Syntax
 **node --harmony**|**--harmony-proxies** *file* **--** *functionName*[:[arg1,arg2...]]
 
-#How it works?
+##How it works?
 You require `funxtion` in your prototype file and expose your functions to `funxtion` (preferred if you expose it under the name `exports` as shown in example below). `Funxtion` then watches for all the functions that's exposed to it and then executes if the argument matches any function name.
 
 
-##Example
+###Example
 		//index.js
 		var exports = require('funxtion');
 
@@ -26,6 +26,7 @@ You require `funxtion` in your prototype file and expose your functions to `funx
 		shriek@ubuntu $ node --harmony-proxies index.js -- function1:arg1,arg2
 
 You can also do this:-
+
 		//index2.js
 		var anyName = require('funxtion');
 		
