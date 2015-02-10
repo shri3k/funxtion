@@ -38,4 +38,5 @@ You can also do this:-
 		shriek@ubuntu $ node --harmony-proxies index.js -- function1:arg1,arg2
 
 **Note**
+
 As of node `v0.12.0` it is not mandatory to give  `--harmony--proxies` flag. Doing just `--harmony` will not work.
