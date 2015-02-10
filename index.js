@@ -1,16 +1,21 @@
 'use strict';
 
+function getErrTxt(version) {
+  var v12 = version < 'v0.12.0' ? '--harmony or ' : '';
+  console.log('No Harmony flag given. \nPlease re-run with %s--harmony-proxies flag\n', v12);
+}
+
 try {
   Proxy.create({});
 } catch (e) {
-  process.stderr.write('No Harmony flag given. \nPlease re-run with --harmony or --harmony-proxies flag\n');
+  getErrTxt(process.version);
   process.exit(1);
 }
 
 var nopt = require('nopt');
 var parsedArg = nopt({
-	
-	//probably for future
+
+  //probably for future
   'arg': [String, Array],
 }, {}, process.argv, 2);
 

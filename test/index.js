@@ -6,7 +6,7 @@ var util = require('util');
 var exec = require('child_process').exec;
 
 test('Check for proper function call', function(t) {
-  exec('node --harmony ./test/helper.js -- func1', function(err, stdout, stderr) {
+  exec('node --harmony-proxies ./test/helper.js -- func1', function(err, stdout, stderr) {
     if (err) {
       util.log('child process failed with error ', err.code);
     }
@@ -16,7 +16,7 @@ test('Check for proper function call', function(t) {
 });
 
 test('Check for function call with argument', function(t) {
-  exec('node --harmony ./test/helper.js -- func2:"hey"', function(err, stdout, stderr) {
+  exec('node --harmony-proxies ./test/helper.js -- func2:"hey"', function(err, stdout, stderr) {
     if (err) {
       util.log('child process failed with error ', err.code);
     }
@@ -26,7 +26,7 @@ test('Check for function call with argument', function(t) {
 });
 
 test('Check for function call with multiple arguments', function(t) {
-  exec('node --harmony ./test/helper.js -- func3:"test1","test2"', function(err, stdout, stderr) {
+  exec('node --harmony-proxies ./test/helper.js -- func3:"test1","test2"', function(err, stdout, stderr) {
     if (err) {
       util.log('child process failed with error ', err.code);
     }
