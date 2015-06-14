@@ -13,6 +13,7 @@ try {
 }
 
 var nopt = require('nopt');
+var _ = require('lodash');
 var knownOpts = {
   'list': Boolean,
   'arg': [String, Array]
@@ -21,21 +22,34 @@ var shortHands = {
   'ls': ['--list']
 };
 
+/**
+ * Description: Gets a string seperated by delimiters and returns an object
+ *              eg:- "func1:arg1,arg2;func2;func3:arg1"
+ * @method prettyRemains
+ * @param {String}
+ * @return {Object}
+ */
+function prettyRemains(remain) {
+  return _.chain(remain && remain.split('AND')).map(function(acc) {
+    var obj = {};
+    var func = acc.split(':')[0];
+    var args = acc.split(':')[1];
+    obj[func] = args ? args.split(',') : [];
+    return obj;
+  }).reduce(function(acc, next) {
+    return _.extend(acc, next);
+  }).value();
+}
+
 var parsedArg = nopt(knownOpts, shortHands, process.argv, 2);
-
 var options = parsedArg;
-var funx = parsedArg.argv.remain;
-var divider = funx[0] ? funx[0].split(':') : [];
-var funcName = divider[0] ? divider[0] : '';
-var argus = divider[1] ? divider[1].split(',') : [];
-var counter = 0;
-
+var execFuncObj = prettyRemains(parsedArg.argv.remain[0]) || {};
 module.exports = Proxy.create({
   set: function(target, propKey, fn) {
     if (options.list) {
       console.log(propKey);
-    } else if (propKey === funcName) {
-      fn.apply(null, argus);
+    } else if (_.has(execFuncObj, propKey)) {
+      fn.apply(null, execFuncObj[propKey]);
     }
   }
 });

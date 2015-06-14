@@ -4,6 +4,7 @@
   "description": "#Description Makes it able to only execute exported function from the cli without running the whole program",
   "main": "index.js",
   "dependencies": {
+    "lodash": "^3.9.3",
     "nopt": "^3.0.1"
   },
   "devDependencies": {

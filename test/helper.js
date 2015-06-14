@@ -7,9 +7,9 @@ funxtion.func1 = function() {
 };
 
 funxtion.func2 = function(arg1) {
-  process.stdout.write(arg1);
+  process.stdout.write(arg1 + ' name test');
 };
 
 funxtion.func3 = function(arg1, arg2) {
-  process.stdout.write(arg1 + arg2);
+  process.stdout.write(arg1 + arg2 + ' name test');
 };
