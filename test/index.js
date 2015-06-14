@@ -22,7 +22,7 @@ test('Check for function call with argument', function(t) {
     }
     t.equal(stdout, 'hey', 'called the right function with proper argument');
   });
-	t.end();
+  t.end();
 });
 
 test('Check for function call with multiple arguments', function(t) {
@@ -32,5 +32,35 @@ test('Check for function call with multiple arguments', function(t) {
     }
     t.equal(stdout, 'test1test2', 'called with multiple arguments ');
   });
-	t.end();
+  t.end();
+});
+
+test('Check for listing all function names when --list flag is given', function(t) {
+  exec('node --harmony-proxies ./test/helper.js --list', function(err, stdout, stderr) {
+    if (err) {
+      util.log('child process failed with error ', err.code);
+    }
+    t.equal(stdout, 'func1\nfunc2\nfunc3\n');
+  });
+  t.end();
+});
+
+test('Check for listing all function names when -ls flag is given', function(t) {
+  exec('node --harmony-proxies ./test/helper.js --list', function(err, stdout, stderr) {
+    if (err) {
+      util.log('child process failed with error ', err.code);
+    }
+    t.equal(stdout, 'func1\nfunc2\nfunc3\n');
+  });
+  t.end();
+});
+
+test('Check for listing all function names when -ls flag is given while trying to invoke function at the same time', function(t) {
+  exec('node --harmony-proxies ./test/helper.js --list -- func3:arg1,arg2', function(err, stdout, stderr) {
+    if (err) {
+      util.log('child process failed with error ', err.code);
+    }
+    t.equal(stdout, 'func1\nfunc2\nfunc3\n');
+  });
+  t.end();
 });
