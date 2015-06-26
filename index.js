@@ -1,4 +1,7 @@
 'use strict';
+var debug = require('debug')('funxtion');
+var _ = require('lodash');
+var string2array = require('string2array');
 
 function getErrTxt(version) {
   var v12 = version < 'v0.12.0' ? '--harmony or ' : '';
@@ -33,8 +36,8 @@ function prettyRemains(remain) {
   return _.chain(remain && remain.split('AND')).map(function(acc) {
     var obj = {};
     var func = acc.split(':')[0];
-    var args = acc.split(':')[1];
-    obj[func] = args ? args.split(',') : [];
+    var args = acc.replace(/^.+?:/, '');
+    obj[func] = args ? string2array(args) : [];
     return obj;
   }).reduce(function(acc, next) {
     return _.extend(acc, next);
@@ -49,6 +52,7 @@ module.exports = Proxy.create({
     if (options.list) {
       console.log(propKey);
     } else if (_.has(execFuncObj, propKey)) {
+      debug('name of function executing: ', propKey);
       fn.apply(null, execFuncObj[propKey]);
     }
   }

@@ -12,4 +12,5 @@ funxtion.func2 = function(arg1) {
 
 funxtion.func3 = function(arg1, arg2) {
   process.stdout.write(arg1 + arg2 + ' name test');
+  // return arg1 + arg2 + ' name test'
 };
